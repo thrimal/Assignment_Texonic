@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="childPage"></div>
+<script>
+    fetch('index.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('childPage').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading index.html:', error));
+</script>
+<section class="container-fluid bg-info ">
+    <h1>Designation Form</h1>
+</section>
+<section class="container-fluid">
+    <section class="row" id="content">
+        <div class="col-md-4 container-fluid">
+            <form id="designationForm">
+                <div>
+                    <label for="name" class="form-check-label">Name</label>
+                    <input class="form-control mat-form-field" id="name" name="name" type="text">
+                </div>
+                <div>
+                    <label for="remark" class="form-check-label">Remark</label>
+                    <input class="form-control mat-form-field" id="remark" name="remark" type="text">
+                </div>
+                <div>
+                    <button class="btn btn-success mt-4 mat-raised-button m-1" type="button" id="btnSaveCustomer" onclick="submitForm()">Save</button>
+                    <button class="btn btn-primary mt-4 mat-raised-button m-1" type="button" id="btnUpdateCustomer" onclick="updateDesignation()">Update</button>
+<!--                    <button class="btn btn-warning mt-4 mat-raised-button m-1" type="button" id="btnGetCustomer" onclick="getCustomer()"> Get</button>-->
+<!--                    <button class="btn btn-danger mt-4 mat-raised-button m-1" type="button" id="btnDeleteCustomer" onclick="deleteCustomer()">Delete</button>-->
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8" id="table" style="height: 10cm;overflow-y: scroll;">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-warning">
+                <tr>
+                    <th class="table-bordered">Id</th>
+                    <th class="table-bordered">Designation</th>
+                    <th class="table-bordered">Remark</th>
+                    <th class="table-bordered">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="tblCustomer">
+                <!-- Table rows will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+<script src="Designation.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="childPage"></div>
+<script>
+    fetch('index.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('childPage').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading child.html:', error));
+</script>
+<section class="container-fluid bg-info ">
+    <h1>Employee Form</h1>
+</section>
+<section class="container-fluid">
+    <section class="row" id="content">
+        <div class="col-md-4 container-fluid">
+            <form id="employeeForm">
+                <div>
+                    <label for="name" class="form-check-label">Full Name</label>
+                    <input class="form-control mat-form-field" id="name" name="name" type="text">
+                </div>
+                <div>
+                    <label for="date" class="form-check-label">Join Date</label>
+                    <input class="form-control mat-form-field" id="date" name="date" type="date">
+                </div>
+                <div>
+                    <label for="myCheckbox">Is Manager:</label>
+                    <input type="checkbox" id="myCheckbox" name="myCheckbox">
+                </div>
+                <div>
+                    <button class="btn btn-success mt-4 mat-raised-button m-1" type="button" id="btnSaveCustomer"
+                            onclick="submitForm()">Save
+                    </button>
+                    <button class="btn btn-primary mt-4 mat-raised-button m-1" type="button" id="btnUpdateCustomer"
+                            onclick="updateEmployee()">Update
+                    </button>
+<!--                    <button class="btn btn-warning mt-4 mat-raised-button m-1" type="button" id="btnGetCustomer"-->
+<!--                            (click)="getCustomer()"> Get-->
+<!--                    </button>-->
+<!--                    <button class="btn btn-danger mt-4 mat-raised-button m-1" type="button" id="btnDeleteCustomer"-->
+<!--                             ">Delete-->
+<!--                    </button>-->
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8" id="table" style="height: 10cm;overflow-y: scroll;">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-warning">
+                <tr>
+                    <th class="table-bordered">Id</th>
+                    <th class="table-bordered">First Name</th>
+                    <th class="table-bordered">Last Name</th>
+                    <th class="table-bordered">Join Date</th>
+                    <th class="table-bordered">Is Manager</th>
+                    <th class="table-bordered">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="tblEmployee">
+<!--                <tr>-->
+<!--                    <td><span>{{c.customerId}}</span></td>-->
+<!--                    <td><span>{{c.customerName}}</span></td>-->
+<!--                    <td><span>{{c.customerAddress}}</span></td>-->
+<!--                    <td><span>{{c.customerSalary}}</span></td>-->
+<!--                </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+<script src="Employee.js"></script>
+</body>
+</html>
